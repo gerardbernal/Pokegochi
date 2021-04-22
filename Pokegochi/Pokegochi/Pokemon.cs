@@ -18,7 +18,7 @@ namespace Pokegochi
         }
 
         PokemonDetails pokeDetails;
-        PokemonSpecies pokeSpecies;
+        PokemonSpecies pokemonSpecies;
 
         string nombre;
         TypeElement[] tipo;
@@ -31,7 +31,7 @@ namespace Pokegochi
         private EstadosDeSalud SaludDelPokemon { get => saludDelPokemon; set => saludDelPokemon = value; }
         public TypeElement[] Tipo { get => tipo; set => tipo = value; }
         public PokemonDetails PokeDetails { get => pokeDetails; set => pokeDetails = value; }
-        public PokemonSpecies PokeSpecies { get => pokeSpecies; set => pokeSpecies = value; }
+        public PokemonSpecies PokemonSpecies { get => pokemonSpecies; set => pokemonSpecies = value; }
 
         public Pokemon()
         {

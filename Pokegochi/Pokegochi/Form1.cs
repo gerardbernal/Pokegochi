@@ -23,77 +23,76 @@ namespace Pokegochi
         public Form1()
         {
             InitializeComponent();
-   
-
         }
 
-        private void but_AñadirPokemon_Click(object sender, EventArgs e)
+        private void but_AddPokemon_Click(object sender, EventArgs e)
         {
             Pokemon pokemon = new Pokemon();
-            GetPokemonNameAndTypeAsync("https://pokeapi.co/api/v2/pokemon/" + txt_addPokemon.Text, pokemon);
+            GetPokemonNameAndTypeAsyncYComprobarLegendario("https://pokeapi.co/api/v2/pokemon/" + txt_addPokemon.Text, pokemon);
             GetPokemonIsLegendaryAsync("https://pokeapi.co/api/v2/pokemon-species/" + txt_addPokemon.Text, pokemon);
-
             j1.Pokedex.Add(pokemon);
-            //ComprobarLegendario(pokemon);
-
-
         }
 
-        async void GetPokemonNameAndTypeAsync(string url, Pokemon nuevoPokemon)
-        {   
-           
-            
+
+
+        async void GetPokemonNameAndTypeAsyncYComprobarLegendario(string url, Pokemon nuevoPokemon)
+        {
             string page = url;
-            
-            using (HttpClient client = new HttpClient())
-            using (HttpResponseMessage response = await client.GetAsync(page))
-            using (HttpContent content = response.Content)
+
+            using HttpClient client = new HttpClient();
+            using HttpResponseMessage response = await client.GetAsync(page);
+            using HttpContent content = response.Content;
+
+            string result = await content.ReadAsStringAsync();
+            if (result != "Not Found")
             {
-                string result = await content.ReadAsStringAsync();
-               
+
                 nuevoPokemon.PokeDetails = PokemonDetails.FromJson(result);
-                
 
+                nuevoPokemon.Nombre = nuevoPokemon.PokeDetails.Name;
+                nuevoPokemon.Tipo = nuevoPokemon.PokeDetails.Types;
+
+
+                if (nuevoPokemon.EsLegendario == false)
+                {
+                    count++;
+                    listBoxPokedex.Items.Add(nuevoPokemon.Nombre + ", " + nuevoPokemon.Tipo[0].Type.Name);
+
+                }
+                else
+                    j1.Pokedex.RemoveAt(count);
+
+                if (nuevoPokemon.EsLegendario == true && labelTextoLegendario.Visible == true)
+                {
+                    count++;
+                    listBoxPokedex.Items.Add(nuevoPokemon.Nombre + ", " + nuevoPokemon.Tipo[0].Type.Name);
+                    labelTextoLegendario.Visible = false;
+                }
             }
-            nuevoPokemon.Nombre = nuevoPokemon.PokeDetails.Name;
-            nuevoPokemon.Tipo = nuevoPokemon.PokeDetails.Types;
-
-            if (j1.Pokedex[count].EsLegendario == false)
-            {
-                count++;
-                listBoxPokedex.Items.Add(nuevoPokemon.Nombre + ", " + nuevoPokemon.Tipo[0].Type.Name);
-                j1.CaramelosRaros++;
-            }
-            else
-                j1.Pokedex.RemoveAt(count);
-
-
-
         }
         async void GetPokemonIsLegendaryAsync(string url, Pokemon nuevoPokemon)
         {
-         
             string page = url;
 
-            using (HttpClient client = new HttpClient())
-            using (HttpResponseMessage response = await client.GetAsync(page))
-            using (HttpContent content = response.Content)
-            {
-                string result = await content.ReadAsStringAsync();
+            using HttpClient client = new HttpClient();
 
-                nuevoPokemon.PokeSpecies = PokemonSpecies.FromJson(result);
+            using HttpResponseMessage response = await client.GetAsync(page);
+            using HttpContent content = response.Content;
+            string result = await content.ReadAsStringAsync();
+
+            if (result != "Not Found")
+            { 
+
+                nuevoPokemon.PokemonSpecies = PokemonSpecies.FromJson(result);
+
+                nuevoPokemon.EsLegendario = nuevoPokemon.PokemonSpecies.IsLegendary;
             }
-            nuevoPokemon.EsLegendario = nuevoPokemon.PokeSpecies.IsLegendary;
-
-            
-
 
         }
-        
-
         private void Form1_Load(object sender, EventArgs e)
         {
-        
+            labelTextoLegendario.ForeColor = System.Drawing.Color.Red;
+            labelTextoLegendario.Visible = false;
         }
 
         private void but_Nombre_Click(object sender, EventArgs e)
@@ -103,9 +102,51 @@ namespace Pokegochi
             txt_NombreJ.Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void butTransferirPokemon_Click(object sender, EventArgs e)
+        {
+            if (listBoxPokedex.SelectedIndex >= 0)
+            {
+                listBoxPokedex.Items.RemoveAt(listBoxPokedex.SelectedIndex);
+                count--;
+                j1.Pokedex.RemoveAt(count);
+
+                j1.CaramelosRaros++;
+                actualizarLabelCaramelos();
+            }
+
+
+        }
+
+        private void butTransferirTodosPokemon_Click(object sender, EventArgs e)
+        {
+            j1.CaramelosRaros = listBoxPokedex.Items.Count;
+            actualizarLabelCaramelos();
+            listBoxPokedex.Items.Clear();
+            count = 0;
+        }
+
+        private void ConsultarEstadoPokemon_Click(object sender, EventArgs e)
         {
             labelPokemon.Text = j1.Pokedex[listBoxPokedex.SelectedIndex].ToString();
         }
+
+        private void but_ConseguirLegendario_Click(object sender, EventArgs e)
+        {
+            if (j1.CaramelosRaros > 20)
+            {
+                labelTextoLegendario.Visible = true;
+
+                j1.CaramelosRaros -= 20;
+                actualizarLabelCaramelos();
+            }
+        }
+
+
+        void actualizarLabelCaramelos()
+        {
+            labelContadorCaramelos.Text = j1.CaramelosRaros.ToString();
+        }
+
+
     }
 }
