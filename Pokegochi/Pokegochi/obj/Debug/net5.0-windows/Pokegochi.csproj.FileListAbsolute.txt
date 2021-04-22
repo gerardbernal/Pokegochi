@@ -1,4 +1,3 @@
-C:\Users\gerar\OneDrive\Documentos\.Net Bootcamp\Pokegochi\Pokegochi\Pokegochi\obj\Debug\net5.0-windows\Pokegochi.csprojAssemblyReference.cache
 C:\Users\gerar\OneDrive\Documentos\.Net Bootcamp\Pokegochi\Pokegochi\Pokegochi\obj\Debug\net5.0-windows\Pokegochi.Form1.resources
 C:\Users\gerar\OneDrive\Documentos\.Net Bootcamp\Pokegochi\Pokegochi\Pokegochi\obj\Debug\net5.0-windows\Pokegochi.csproj.GenerateResource.cache
 C:\Users\gerar\OneDrive\Documentos\.Net Bootcamp\Pokegochi\Pokegochi\Pokegochi\obj\Debug\net5.0-windows\Pokegochi.GeneratedMSBuildEditorConfig.editorconfig
@@ -21,3 +20,4 @@ C:\Users\gerar\OneDrive\Documentos\.Net Bootcamp\Pokegochi\Pokegochi\Pokegochi\o
 C:\Users\gerar\OneDrive\Documentos\.Net Bootcamp\Pokegochi\Pokegochi\Pokegochi\obj\Debug\net5.0-windows\ref\Pokegochi.dll
 C:\Users\gerar\OneDrive\Documentos\.Net Bootcamp\Pokegochi\Pokegochi\Pokegochi\obj\Debug\net5.0-windows\Pokegochi.pdb
 C:\Users\gerar\OneDrive\Documentos\.Net Bootcamp\Pokegochi\Pokegochi\Pokegochi\obj\Debug\net5.0-windows\Pokegochi.genruntimeconfig.cache
+C:\Users\gerar\OneDrive\Documentos\.Net Bootcamp\Pokegochi\Pokegochi\Pokegochi\obj\Debug\net5.0-windows\Pokegochi.csprojAssemblyReference.cache

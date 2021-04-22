@@ -17,6 +17,9 @@ namespace Pokegochi
             Pesimo
         }
 
+        PokemonDetails pokeDetails;
+        PokemonSpecies pokeSpecies;
+
         string nombre;
         TypeElement[] tipo;
         bool esLegendario;
@@ -27,6 +30,8 @@ namespace Pokegochi
         public bool EsLegendario { get => esLegendario; set => esLegendario = value; }
         private EstadosDeSalud SaludDelPokemon { get => saludDelPokemon; set => saludDelPokemon = value; }
         public TypeElement[] Tipo { get => tipo; set => tipo = value; }
+        public PokemonDetails PokeDetails { get => pokeDetails; set => pokeDetails = value; }
+        public PokemonSpecies PokeSpecies { get => pokeSpecies; set => pokeSpecies = value; }
 
         public Pokemon()
         {
@@ -35,16 +40,17 @@ namespace Pokegochi
             esLegendario = false;
             SaludDelPokemon = EstadosDeSalud.Optimo;
         }
-        public Pokemon(string _nombre, TypeElement[] _tipo, bool _Legendario, EstadosDeSalud _salud)
+        public Pokemon(string _nombre, TypeElement[] _tipo, bool _esLegendario)
         {
             Nombre = _nombre;
             Tipo = _tipo;
-            EsLegendario = _Legendario;
-            saludDelPokemon = _salud;
+            EsLegendario = _esLegendario;
+            SaludDelPokemon = EstadosDeSalud.Optimo;
         }
         public override string ToString()
         {
-            return Nombre + " es de tipo " + (Tipo.Count() >1 ? Tipo[0] + " y " + Tipo[1] : Tipo[0]) + 
+            
+            return Nombre + " es de tipo " + (Tipo.Count() > 1 ? Tipo[0].Type.Name + " y " + Tipo[1].Type.Name : Tipo[0].Type.Name) + 
                 " y su estado de salud es " + SaludDelPokemon;
         }
     }

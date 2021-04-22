@@ -22,10 +22,7 @@ namespace Pokegochi
             Pokedex = new List<Pokemon>();
             caramelosRaros = 0;
         }
-        public void AñadirPokemonALaPokedex(Pokemon pokemon)
-        {
-            Pokedex.Add(pokemon);
-        }
+        
         public string ConsutlarEstadoDelPokemon(Pokemon pokemon)
         {
             return pokemon.ToString();

@@ -29,14 +29,14 @@ namespace Pokegochi
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.but_AñadirPokemon = new System.Windows.Forms.Button();
             this.txt_addPokemon = new System.Windows.Forms.TextBox();
             this.txt_NombreJ = new System.Windows.Forms.TextBox();
             this.but_Nombre = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.PokemonBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.PokemonBindingSource)).BeginInit();
+            this.listBoxPokedex = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelPokemon = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // but_AñadirPokemon
@@ -82,11 +82,41 @@ namespace Pokegochi
             this.label1.TabIndex = 4;
             this.label1.Text = "Nombre del Jugador";
             // 
+            // listBoxPokedex
+            // 
+            this.listBoxPokedex.FormattingEnabled = true;
+            this.listBoxPokedex.ItemHeight = 15;
+            this.listBoxPokedex.Location = new System.Drawing.Point(468, 37);
+            this.listBoxPokedex.Name = "listBoxPokedex";
+            this.listBoxPokedex.Size = new System.Drawing.Size(214, 244);
+            this.listBoxPokedex.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(41, 364);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(372, 30);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // labelPokemon
+            // 
+            this.labelPokemon.AutoSize = true;
+            this.labelPokemon.Location = new System.Drawing.Point(41, 201);
+            this.labelPokemon.Name = "labelPokemon";
+            this.labelPokemon.Size = new System.Drawing.Size(0, 15);
+            this.labelPokemon.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelPokemon);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listBoxPokedex);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.but_Nombre);
             this.Controls.Add(this.txt_NombreJ);
@@ -95,7 +125,6 @@ namespace Pokegochi
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.PokemonBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,7 +137,9 @@ namespace Pokegochi
         private System.Windows.Forms.TextBox txt_NombreJ;
         private System.Windows.Forms.Button but_Nombre;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource PokemonBindingSource;
+        private System.Windows.Forms.ListBox listBoxPokedex;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelPokemon;
     }
 }
 
