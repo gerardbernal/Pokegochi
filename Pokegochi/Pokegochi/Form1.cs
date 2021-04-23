@@ -106,11 +106,10 @@ namespace Pokegochi
         {
             if (listBoxPokedex.SelectedIndex >= 0)
             {
+                
                 listBoxPokedex.Items.RemoveAt(listBoxPokedex.SelectedIndex);
                 count--;
-                j1.Pokedex.RemoveAt(count);
-
-                j1.CaramelosRaros++;
+                j1.TransferirPokemon(count);
                 actualizarLabelCaramelos();
             }
 
@@ -119,7 +118,7 @@ namespace Pokegochi
 
         private void butTransferirTodosPokemon_Click(object sender, EventArgs e)
         {
-            j1.CaramelosRaros = listBoxPokedex.Items.Count;
+            j1.CaramelosRaros += listBoxPokedex.Items.Count;
             actualizarLabelCaramelos();
             listBoxPokedex.Items.Clear();
             count = 0;
@@ -127,7 +126,8 @@ namespace Pokegochi
 
         private void ConsultarEstadoPokemon_Click(object sender, EventArgs e)
         {
-            labelPokemon.Text = j1.Pokedex[listBoxPokedex.SelectedIndex].ToString();
+            if(listBoxPokedex.SelectedIndex >= 0)
+                labelPokemon.Text = j1.Pokedex[listBoxPokedex.SelectedIndex].ToString();
         }
 
         private void but_ConseguirLegendario_Click(object sender, EventArgs e)

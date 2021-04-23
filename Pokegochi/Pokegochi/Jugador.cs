@@ -27,9 +27,9 @@ namespace Pokegochi
         {
             return pokemon.ToString();
         }
-        public void TransferirPokemon(Pokemon pokemon)
+        public void TransferirPokemon(int i)
         {
-            Pokedex.Remove(pokemon);
+            Pokedex.RemoveAt(i);
             caramelosRaros++;
         }
     }
